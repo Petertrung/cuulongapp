@@ -1,8 +1,10 @@
 <template>
   <div>
-    <hero />
-    <hr />
-    <home-content />
+    <div>
+     <hero />
+     <hr />
+     <home-content />
+    </div>
   </div>
 </template>
 

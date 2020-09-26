@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-card class="mx-auto mb-4"></v-card>
-    <v-btn block class="ma-2" outlined color="primary">Add Restaurant</v-btn>
+    <h2 class="text-center">{{restaurants.name}}</h2>
+    <v-card class="mx-auto mb-4">{{restaurants}}</v-card>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:3000/api/restaurants/")
+      .get("/api/restaurants/" + this.$route.params.userId)
       .then((response) => (this.restaurants = response.data));
   },
 };

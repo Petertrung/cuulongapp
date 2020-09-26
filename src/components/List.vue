@@ -10,11 +10,13 @@
       </v-list-item>
 
       <v-card-actions>
-        <v-btn text color="deep-purple accent-4">Edit</v-btn>
-        <v-btn text color="deep-purple accent-4">Order</v-btn>
+        <router-link :to="{ name: 'addrest', params: { userId: rest._id }}">
+          <v-btn text color="secondary">Edit</v-btn>
+        </router-link>
+        <v-btn text color="accent">Order</v-btn>
       </v-card-actions>
     </v-card>
-    <v-btn block class="ma-2" outlined color="primary">Add Restaurant</v-btn>
+    <v-btn block outlined color="primary">Add Restaurant</v-btn>
   </div>
 </template>
 
@@ -30,7 +32,7 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:3000/api/restaurants/")
+      .get("/api/restaurants/")
       .then((response) => (this.restaurants = response.data));
   },
 };

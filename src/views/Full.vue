@@ -1,16 +1,15 @@
 <template>
   <div>
-    <hero />
+    <router-view />
   </div>
 </template>
 <script>
-import Hero from "../components/Hero";
+import AddRest from "../components/AddRest";
 
 export default {
   name: "full",
   components: {
-    Hero,
-    HomeContent
-  }
+    AddRest,
+  },
 };
 </script>

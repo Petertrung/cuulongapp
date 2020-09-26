@@ -18,7 +18,7 @@
 export default {
   data() {
     return {
-      bgColor: "#0097a7",
+      bgColor: "#4DB6AC",
       position: "top-right",
       mainicon: "settings",
       fabActions: [
@@ -35,20 +35,20 @@ export default {
         {
           name: "alertMe",
           icon: "assignment",
-          color: "#000"
+          color: "#b0bec5"
         }
       ]
     };
   },
   methods: {
     profile() {
-      window.location = "/profile";
+      this.$router.push({ path: "/profile" });
     },
     cart() {
-      alert("Cart");
+      this.$router.push({ name: "restpro" });
     },
     test() {
-      alert("Home");
+      this.$router.push({ name: "test" });
     }
   }
 };
