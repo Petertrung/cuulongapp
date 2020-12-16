@@ -45,7 +45,7 @@ export default {
       this.$router.push({ path: "/profile" });
     },
     cart() {
-      this.$router.push({ name: "restpro" });
+      this.$router.push({ name: "Ordering" });
     },
     test() {
       this.$router.push({ name: "test" });

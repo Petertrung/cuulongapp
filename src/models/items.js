@@ -1,27 +1,18 @@
 const mongoose = require("mongoose");
-const Restaurants = require("./restaurants");
 
-const userModel = mongoose.Schema({
+const itemModel = mongoose.Schema({
   name: {
     type: String,
     require: true
   },
-  animal: {
+  wave_id: {
     type: String,
     require: true
   },
-  typeof: {
-    type: String,
-    require: true
-  },
-  status: {
-    type: String,
-    require: true
-  },
-  price: {
+  type: {
     type: String,
     require: true
   }
 });
 
-module.exports = mongoose.model("items", userModel);
+module.exports = mongoose.model("item", itemModel);

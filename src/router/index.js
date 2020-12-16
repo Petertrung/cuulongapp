@@ -6,7 +6,10 @@ import Full from "../views/Full.vue";
 import Login from "../views/Login.vue";
 import AddRest from "../components/AddRest.vue";
 import Restpro from "../components/Restpro.vue";
+import Ordering from "../components/Ordering.vue";
+import Item from "../components/AddItem.vue"
 import Test from "../components/Test.vue";
+import OrderProfile from "../components/OrderPage"
 import { authGuard } from "../auth";
 
 Vue.use(Router);
@@ -30,6 +33,24 @@ const router = new Router({
       path: "/profile",
       name: "profile",
       component: Profile,
+      beforeEnter: authGuard
+    },
+    {
+      path: "/ordering",
+      name: "Ordering",
+      component: Ordering,
+      beforeEnter: authGuard,
+    },
+    {
+      path: "/orderprofile",
+      name: "OrderProfile",
+      component: OrderProfile,
+      beforeEnter: authGuard,
+    },
+    {
+      path: "/item",
+      name: "Item",
+      component: Item,
       beforeEnter: authGuard
     },
     {

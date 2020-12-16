@@ -4,8 +4,8 @@ const configureAPI = require("./src/server/configure");
 module.exports = {
   devServer: {
     before: configureAPI,
-    port: 3000
-    //historyApiFallback: false
+    port: 3000,
+    historyApiFallback: false
   },
   configureWebpack: {
     plugins: [

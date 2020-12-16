@@ -13,6 +13,8 @@ import VueApollo from "vue-apollo";
 import ApolloClient from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import { GooglePayButton } from 'vue-google-pay'
+import "../src/common-functions"
 
 Vue.config.productionTip = false;
 
@@ -32,6 +34,7 @@ Vue.directive("highlightjs", HighlightJs);
 Vue.component("fab", fab);
 Vue.use(Vuex);
 Vue.use(VueApollo);
+Vue.component("GooglePayButton",GooglePayButton)
 
 const getHeaders = () => {
   const headers = {};
@@ -47,6 +50,7 @@ const link = new HttpLink({
   fetch,
   headers: getHeaders()
 });
+//https://realm.mongodb.com/api/client/v2.0/app/cuulong-owaug/graphql
 const client = new ApolloClient({
   link: link,
   cache: new InMemoryCache({
@@ -57,6 +61,16 @@ const client = new ApolloClient({
 const apolloProvider = new VueApollo({
   defaultClient: client
 });
+
+console.log(Vue.prototype.$auth._data.user.sub)
+if(Vue.prototype.$auth.user.sub){
+  var sub = Vue.prototype.$auth.user.sub
+  var userId = sub.replace("auth0|","")
+  // localStorage.setItem("userId", userId);
+  Vue.prototype.$userId = userId;
+  console.log(this.$auth.user.sub)
+ }
+ Vue.prototype.$userId = "54324246234"
 
 new Vue({
   router,

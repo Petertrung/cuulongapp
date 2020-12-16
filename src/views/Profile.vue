@@ -11,6 +11,10 @@
     <div class="row">
       <pre v-highlightjs="JSON.stringify($auth.user, null, 2)" class="rounded w-100"><code class="json"></code></pre>
     </div>
+    <router-link :to="{ name: 'Item' }"
+      ><v-btn block text color="primary">Add Item</v-btn></router-link
+    >
+
     <v-btn block outlined color="error" @click.prevent="logout">Log out</v-btn>
   </div>
 </template>

@@ -1,22 +1,29 @@
 <template>
   <div>
-    <v-card class="mx-auto mb-4" v-for="rest of restaurants" v-bind:key="rest.name">
+    <v-card
+      class="mx-auto mb-4"
+      elevation="2"
+      v-for="rest of restaurants"
+      v-bind:key="rest.name"
+    >
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="headline">{{rest.name}}</v-list-item-title>
-          <v-list-item-subtitle>{{rest.close_location}}</v-list-item-subtitle>
+          <v-list-item-title>{{ rest.name }}</v-list-item-title>
         </v-list-item-content>
-        <p>Open Orders:</p>
       </v-list-item>
 
       <v-card-actions>
-        <router-link :to="{ name: 'addrest', params: { userId: rest._id }}">
-          <v-btn text color="secondary">Edit</v-btn>
+        <router-link :to="{ name: 'restpro', params: { userId: rest._id } }">
+          <v-btn text color="secondary">View</v-btn>
         </router-link>
+        <router-link :to="{ name: 'Ordering', params: { rest_id: rest.restaurant_id } }">
         <v-btn text color="accent">Order</v-btn>
+        </router-link>
       </v-card-actions>
     </v-card>
-    <v-btn block outlined color="primary">Add Restaurant</v-btn>
+    <router-link :to="{ name: 'addrest' }"
+      ><v-btn block outlined color="primary">Add Restaurant</v-btn></router-link
+    >
   </div>
 </template>
 

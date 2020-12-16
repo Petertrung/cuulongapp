@@ -10,15 +10,8 @@ const userModel = mongoose.Schema({
     type: String,
     require: true
   },
-  restaurant_id: {
-    type: String
-  },
-  status: {
-    type: String
-  },
-  resturant: {
-    Restaurants
-  }
+  user_metadata: {},
+  resturant: []
 });
 
 module.exports = mongoose.model("users", userModel);
