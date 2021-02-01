@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const postRoute = require("../router/post");
+const stripeRoute = require("../router/stripe");
 
 module.exports = app => {
   app.use(bodyParser.json());
   app.use(cors());
   app.use("/api", postRoute);
+  app.use("/stripes", stripeRoute)
 };
 
 //connect to DB

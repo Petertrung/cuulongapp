@@ -123,6 +123,17 @@
   </v-simple-table>
 
   </v-card>
+<stripe-checkout
+    ref="checkoutRef"
+    :pk="publishableKey"
+    :amount="amount"
+    :session-id="sessionId"
+    v-if="showpay"
+  >
+    <template slot="checkout-button">
+      <v-btn block outlined color="success" @click="checkout"> Pay ${{amount}}</v-btn>
+    </template>
+  </stripe-checkout>
   </div>
   <div v-if="errors">
         <v-card
@@ -200,16 +211,24 @@
 <script>
 import axios from "axios";
 import { GET_BY_INVOICE } from "../router/querygql";
+import { StripeCheckout } from 'vue-stripe-checkout';
 
 export default {
   name: "OrderPage",
+  components: {
+    StripeCheckout
+  },
   data() {
     return {
       e6: null,
       order: null,
       restaurant: null,
       business: null,
-      errors: null
+      errors: null,
+      showpay: false,
+      amount: null,
+      publishableKey: "pk_test_51HzWZ2AzwLBskmWxGTbPVfgqBflhaSprfsdVY3vIlwmO3Ck1sredwXhR7I1oyzg7hNbrbnmMjNWjMp4nFgdXaOjU00iDKmtL4Y",
+      sessionId: null
     };
   },
      async beforeCreate() {
@@ -255,10 +274,25 @@ export default {
       }else if(statusDB){
         this.e6 = parseInt(statusDB);
       }
+      this.amount = this.business.invoice.amountDue.value;
+    },
+    showpayment: function(){
+      this.showpay = true
+    },
+    checkout () {
+      var amount = this.amount * 100;
+      axios.post('/stripes/create-session', {
+        price: amount,
+        orderId: this.order._id
+      }).then((response) => {
+         this.sessionId = response.data.sessionId;
+         this.$refs.checkoutRef.redirectToCheckout();
+        });
     }
   },
   updated(){
     this.setStatus();
+    this.showpayment();
     }
 };
 </script>

@@ -7,14 +7,15 @@ import vuetify from "@/plugins/vuetify"; // path to vuetify export
 import { Auth0Plugin } from "./auth";
 import HighlightJs from "./directives/highlight";
 import { domain, clientId } from "../auth_config.json";
-import Vuex from "vuex";
+import store from "./store/index";
 import "es6-promise/auto";
 import VueApollo from "vue-apollo";
 import ApolloClient from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { GooglePayButton } from 'vue-google-pay'
 import "../src/common-functions"
+import { Plugins } from '@capacitor/core'
+const { SplashScreen } = Plugins
 
 Vue.config.productionTip = false;
 
@@ -32,9 +33,7 @@ Vue.use(Auth0Plugin, {
 
 Vue.directive("highlightjs", HighlightJs);
 Vue.component("fab", fab);
-Vue.use(Vuex);
 Vue.use(VueApollo);
-Vue.component("GooglePayButton",GooglePayButton)
 
 const getHeaders = () => {
   const headers = {};
@@ -70,11 +69,14 @@ if(Vue.prototype.$auth.user.sub){
   Vue.prototype.$userId = userId;
   console.log(this.$auth.user.sub)
  }
- Vue.prototype.$userId = "54324246234"
 
 new Vue({
   router,
   vuetify,
+  store,
   apolloProvider,
-  render: h => h(App)
+  render: h => h(App),
+   mounted() {
+   SplashScreen.hide()
+   }
 }).$mount("#app");

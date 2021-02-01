@@ -12,6 +12,9 @@ const orderModel = mongoose.Schema({
   user_id: {
     type: String,
     require: true
+  },
+  pay:{
+    type: String
   }
 });
 

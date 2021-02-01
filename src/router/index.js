@@ -9,6 +9,7 @@ import Restpro from "../components/Restpro.vue";
 import Ordering from "../components/Ordering.vue";
 import Item from "../components/AddItem.vue"
 import Test from "../components/Test.vue";
+import SuccussPayment from "../components/SuccessfulPayment.vue"
 import OrderProfile from "../components/OrderPage"
 import { authGuard } from "../auth";
 
@@ -73,6 +74,12 @@ const router = new Router({
           path: "test",
           name: "test",
           component: Test
+        },
+        {
+          path: "payment/:id",
+          name: "payment",
+          alias: '/success',
+          component: SuccussPayment
         }
       ]
     }

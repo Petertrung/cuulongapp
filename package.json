@@ -6,10 +6,16 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "capacitor:build": "vue-cli-service capacitor:build",
+    "capacitor:serve": "vue-cli-service capacitor:serve",
     "cypress": "cypress open"
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.11.0",
+    "@capacitor/android": "^2.4.6",
+    "@capacitor/cli": "^2.4.6",
+    "@capacitor/core": "^2.4.6",
+    "@capacitor/ios": "^2.4.6",
     "@vue/apollo-composable": "^4.0.0-alpha.10",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
@@ -30,11 +36,13 @@
     "mongoose": "^5.10.2",
     "morgan": "^1.10.0",
     "semantic-ui-css": "^2.4.1",
+    "stripe": "^8.129.0",
     "vue": "^2.6.12",
     "vue-apollo": "^3.0.4",
     "vue-fab": "^2.3.1",
     "vue-google-pay": "0.0.2",
     "vue-router": "^3.4.3",
+    "vue-stripe-checkout": "^3.5.13",
     "vuetify": "^2.3.10",
     "vuex": "^3.5.1"
   },
@@ -49,11 +57,8 @@
     "node-sass": "^4.14.1",
     "sass": "^1.26.10",
     "sass-loader": "^7.3.1",
+    "vue-cli-plugin-capacitor": "~2.0.1",
     "vue-template-compiler": "^2.6.12"
-  },
-  "prettier": {
-    "singleQuote": false,
-    "semi": true
   },
   "eslintConfig": {
     "root": true,
@@ -74,5 +79,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     }
+  },
+  "prettier": {
+    "singleQuote": false,
+    "semi": true
   }
 }

@@ -5,7 +5,7 @@ module.exports = {
   devServer: {
     before: configureAPI,
     port: 3000,
-    historyApiFallback: false
+    historyApiFallback: true
   },
   configureWebpack: {
     plugins: [

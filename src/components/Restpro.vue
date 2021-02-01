@@ -159,7 +159,9 @@
           </v-icon>
         </v-list-item-icon> -->
       </v-list-item>
-      <v-subheader v-if="orders.length < 1">No Orders Yet</v-subheader>
+      <div v-if="orders">
+        <v-subheader v-if="orders.length < 1">No Orders Yet</v-subheader>
+      </div>
     </v-list>
     </v-card-text>
 
@@ -234,11 +236,11 @@ export default {
    async beforeCreate() {
     await axios
       .get("/api/restaurants/" + this.$route.params.userId)
-      .then((response) => (this.restaurant = response.data,this.editrest = response.data ))
+      .then((response) => (this.restaurant = response.data,this.editrest = response.data )),
 
         await axios
       .get("/api/orderbyrest/" + this.restaurant.restaurant_id)
-      .then((response) => (this.orders = response.data));
+      .then((response) => (this.orders = response.data,console.log(this.restaurant.restaurant_id)));
   },
   
 };
